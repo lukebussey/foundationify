@@ -7,6 +7,12 @@ Requires Bower and Grunt.
 
 Run 'grunt' to build. Dist directory will contain built theme.
 
+Get Started
+-----------
+1. Checkout project.
+2. Run 'npm install && bower install'.
+3. Run 'grunt'.
+4. Theme will be built into the /dist folder.
 
 To Do
 -----

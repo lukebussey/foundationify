@@ -1,0 +1,24 @@
+
+	
+	<h2>Featured Products</h2>
+	{% for product in collections.frontpage.products limit:3  %}
+		<a href="{{product.url}}">{{ product.featured_image | product_img_url: 'medium' | img_tag }}</a>
+		<h3><a href="{{product.url}}">{{product.title}}</a></h3>
+		<p>{{product.price_min | money}}</p>
+		</ul>
+	{% endfor %}
+
+  	{% assign article = pages.frontpage %}
+	{% if article.content != "" %}	
+			
+		<h3>{{ article.title }}</h3>
+		
+  		{{ article.content }}
+
+	{% endif %}
+    
+    <ul>
+		{% for article in blogs.news.articles limit: 5 %}
+			<li><a href="{{ article.url }}">{{ article.title }}</a></li>
+		{% endfor %}
+	</ul>

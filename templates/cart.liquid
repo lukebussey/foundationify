@@ -1,0 +1,21 @@
+<h2>Your Cart</h2>
+{% if cart.item_count == 0 %}
+	<p>You have nothing in your cart.</p>
+{% else %}
+ 
+	{% for item in cart.items %}
+
+		<p><img src="{{ item.product.images.first | product_img_url: 'thumb' }}" alt="{{ item.title | escape }}" /></p>
+		<p><a href="{{ item.product.url }}">{{ item.title }}</a></p>
+		
+		{{ item.product.description | strip_html | truncate: 120 }}
+
+		<div>{{ item.price | money }}</div>
+		<div>{{ item.quantity }}</div>
+		<div><a href="#">Remove</a> </div>
+		<div>{{ item.line_price | money }}</div>
+
+	{% endfor %}
+
+
+{% endif %}

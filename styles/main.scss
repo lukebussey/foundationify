@@ -1,0 +1,16 @@
+// Make sure the charset is set appropriately
+@charset "UTF-8";
+
+@import "compass/css3";
+
+// Required global settings and mixins for Foundation
+@import "foundation/scss/foundation/foundation-global";
+
+// Foundation Settings
+@import "settings";
+
+// Normalize
+@import "foundation/scss/normalize";
+
+// Foundation
+@import "foundation/scss/foundation";

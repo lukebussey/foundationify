@@ -1,0 +1,62 @@
+<h2>{{ article.title }}</h2>
+
+<p>{{ article.author }}</p>
+<p>Posted on {{ article.created_at | date: "%B %d, '%y" }}</p>
+
+{{ article.content }}
+
+<ul>
+	{% for comment in article.comments %}
+    	<li>
+    		{{ comment.content }}
+      		Posted by {{ comment.author }} on {{ comment.created_at | date: "%B %d, %Y" }}
+  		</li>
+	{% endfor %}
+</ul>
+
+	
+{% form article %}
+	<h3>Leave a comment</h3>
+
+	{% if form.posted_successfully? %}
+		{% if blog.moderated? %}
+    		<p>
+      			Successfully posted your comment.<br>
+      			It will have to be approved by the blog owner first before showing up.
+    		</p>
+  		{% else %}
+    		<p>Successfully posted your comment.</p>
+  		{% endif %}
+	{% endif %}
+
+	{% if form.errors %}
+  		<p>Not all the fields have been filled out correctly!</p>
+	{% endif %}
+
+	<dl>
+  		<dt class="{% if form.errors contains 'author' %}error{% endif %}"><label for="comment_author">Your name</label></dt>
+  		<dd>
+			<input type="text" id="comment_author" name="comment[author]" size="40" value="{{form.author}}" class="{% if form.errors contains 'author' %}input-error{% endif %}" />
+		</dd>
+
+  		<dt class="{% if form.errors contains 'email' %}error{% endif %}">
+			<label for="comment_email">Your email</label>
+		</dt>
+  		<dd>
+			<input type="text" id="comment_email" name="comment[email]" size="40" value="{{form.email}}" class="{% if form.errors contains 'email' %}input-error{% endif %}" />
+		</dd>
+
+  		<dt class="{% if form.errors contains 'body' %}error{% endif %}">
+			<label for="comment_body">Your comment</label>
+		</dt>
+  		<dd>
+			<textarea id="comment_body" name="comment[body]" cols="40" rows="5" class="{% if form.errors contains 'body' %}input-error{% endif %}">{{form.body}}</textarea>
+		</dd>
+	</dl>
+
+	{% if blog.moderated? %}
+  		<p>comments have to be approved before showing up.</p>
+	{% endif %}    
+
+	<input type="submit" value="Post comment" />
+{% endform %}

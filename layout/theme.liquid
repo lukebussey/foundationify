@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+
+        <title>{{ shop.name }} &#124; {{ page_title }}</title>
+
+        {{ 'main.css' | asset_url | stylesheet_tag }}
+        
+        {{ 'custom.modernizr.js' | asset_url| script_tag }}
+
+        {{ content_for_header }}
+    </head>
+
+    <body class="{{ template | replace: '.', ' ' | truncatewords: 1, '' }}" id="{{ page_title | handle }}">
+        
+        <div class="contain-to-grid">
+            <nav class="top-bar">
+                <ul class="title-area">
+                    <li class="name">
+                        <h1><a href="/">{{ shop.name }}</a></h1>
+                    </li>
+                    <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+                </ul>
+
+                <section class="top-bar-section">
+                    <ul class="right">
+                        {% for link in linklists.main-menu.links %}
+                            <li>{{ link.title | link_to: link.url }}</li>
+                        {% endfor %}
+                        <li class="divider"></li>
+                        <li><a href="/cart">Cart ({{ cart.item_count}})</a></li>
+                    </ul 
+                </section>
+
+            </nav>
+        </div>
+
+        <div class="panel">
+            
+        <form action="/search" method="get">
+            <div class="row collapse">
+                <div class="small-10 columns">
+                    <input type="text" name="q" placeholder="">
+                </div>
+                <div class="small-2 columns">
+                    <button class="button prefix">Search</button>
+                </div>
+            </div>
+        </form>
+
+        </div>
+        
+        {{ content_for_layout }}
+
+        <hr>
+
+        <div class="row">
+            <div class="small-4 columns">
+                <p>© {{ "now" | date: "%Y" }} {{ shop.name }}.</p>
+            </div>
+
+            <div class="small-8 text-right columns">
+                {% if linklists.footer.links.size > 0 %}
+                    <ul class="inline-list">
+                        {% for link in linklists.footer.links %}
+                            <li><a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a></li>
+                        {% endfor %}
+                    </ul
+                {% endif %}
+            </div>
+        </div>
+
+        <script>
+            document.write('<script src=' + ('__proto__' in {} ? '{{ 'zepto.js' | asset_url }}' : '{{ 'jquery.js' | asset_url }}') + '><\/script>');
+        </script>
+
+        {{ 'main.js' | asset_url | script_tag }}
+
+        <script>
+            $(document).foundation();
+        </script>
+
+    </body>
+</html>

@@ -18,8 +18,29 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         yeoman: yeomanConfig,
+        watch: {
+            compass: {
+                files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
+                tasks: ['compass:live']
+            },
+            css: {
+                files: ['.tmp/styles/*.css'],
+                tasks: ['cssmin']
+            },
+            js: {
+                files: ['<%= yeoman.app %>/scripts/*.js'],
+                tasks: ['concat:live']
+            },
+            update: {
+                files: ['<%= yeoman.app %>/{layout,snippets,templates}/*.liquid'],
+                tasks: ['copy']
+            }
+        },
         clean: {
-            dist: ['.tmp', '<%= yeoman.dist %>/*']
+            dist: [
+                '.tmp',
+                '<%= yeoman.dist %>/*'
+            ]
         },
         jshint: {
             options: {
@@ -41,7 +62,7 @@ module.exports = function (grunt) {
                 relativeAssets: true
             },
             dist: {},
-            server: {
+            live: {
                 options: {
                     debugInfo: true
                 }
@@ -64,19 +85,25 @@ module.exports = function (grunt) {
                         '<%= yeoman.app %>/scripts/{,*/}*.js'
                     ],
                 }
-            }
+            },
         },
-        useminPrepare: {
-            html: '<%= yeoman.app %>/layout.liquid',
-            options: {
-                dest: '<%= yeoman.dist %>'
-            }
-        },
-        usemin: {
-            html: ['<%= yeoman.dist %>/{,*/}*.liquid'],
-            css: ['<%= yeoman.dist %>/assets/{,*/}*.css'],
-            options: {
-                dirs: ['<%= yeoman.dist %>']
+        concat: {
+            live: {
+                files: {
+                    '<%= yeoman.dist %>/assets/custom.modernizr.js': [
+                        '<%= yeoman.app %>/components/foundation/js/vendor/custom.modernizr.js'
+                    ],
+                    '<%= yeoman.dist %>/assets/zepto.js': [
+                        '<%= yeoman.app %>/components/foundation/js/vendor/zepto.js'
+                    ],
+                    '<%= yeoman.dist %>/assets/jquery.js': [
+                        '<%= yeoman.app %>/components/foundation/js/vendor/jquery.js'
+                    ],
+                    '<%= yeoman.dist %>/assets/main.js': [
+                        '<%= yeoman.app %>/components/foundation/js/foundation/*.js',
+                        '<%= yeoman.app %>/scripts/{,*/}*.js'
+                    ],
+                }
             }
         },
         imagemin: {
@@ -99,27 +126,6 @@ module.exports = function (grunt) {
                 }
             }
         },
-        htmlmin: {
-            dist: {
-                options: {
-                    /*removeCommentsFromCDATA: true,
-                    // https://github.com/yeoman/grunt-usemin/issues/44
-                    //collapseWhitespace: true,
-                    collapseBooleanAttributes: true,
-                    removeAttributeQuotes: true,
-                    removeRedundantAttributes: true,
-                    useShortDoctype: true,
-                    removeEmptyAttributes: true,
-                    removeOptionalTags: true*/
-                },
-                files: [{
-                    expand: true,
-                    cwd: '<%= yeoman.app %>',
-                    src: '*.html',
-                    dest: '<%= yeoman.dist %>'
-                }]
-            }
-        },
         copy: {
             dist: {
                 files: [{
@@ -135,26 +141,28 @@ module.exports = function (grunt) {
                         'templates/**'
                     ]
                 }]
-            }
-        },
-        bower: {
-            all: {
-                rjsConfig: '<%= yeoman.app %>/scripts/main.js'
-            }
+            },
         }
     });
+
+    grunt.renameTask('regarde', 'watch');
+
+    grunt.registerTask('live', [
+        'clean:dist',
+        'compass:live',
+        'cssmin',
+        'concat:live',
+        'copy',
+        'watch'
+    ]);
 
     grunt.registerTask('build', [
         'clean:dist',
         'compass:dist',
-        'useminPrepare',
-        'imagemin',
-        'htmlmin',
-        //'concat',
         'cssmin',
+        'imagemin',
         'uglify',
-        'copy',
-        'usemin'
+        'copy'
     ]);
 
     grunt.registerTask('default', [

@@ -1,24 +1,58 @@
+{% assign article = pages.frontpage %}
+{% if article.content != "" %}	
+	<div class="row">
+		<div class="small-12 columns">
+			<h1>{{ article.title }}</h1>
+		</div>
+		<div class="small-12 columns">
+			{{ article.content }}
+		</div>
+	</div>
+{% endif %}
 
-	
-	<h2>Featured Products</h2>
+<div class="row">
+	<div class="small-12 columns">
+		<h3>{{ collections.frontpage.title }}</h3>
+		{{ collections.frontpage.description }}
+		<hr>
+	</div>
+</div>
+
+<div class="row">
 	{% for product in collections.frontpage.products limit:3  %}
-		<a href="{{product.url}}">{{ product.featured_image | product_img_url: 'medium' | img_tag }}</a>
-		<h3><a href="{{product.url}}">{{product.title}}</a></h3>
-		<p>{{product.price_min | money}}</p>
-		</ul>
+		<div class="small-12 large-4 columns">
+			<a href="{{product.url}}">{{ product.featured_image | product_img_url: 'medium' | img_tag }}</a>
+			<h4 class="subheader"><a href="{{product.url}}">{{product.title}}</a></h4>
+			<p>{{product.price_min | money}}</p>
+		</div>
 	{% endfor %}
+</div>
 
-  	{% assign article = pages.frontpage %}
-	{% if article.content != "" %}	
-			
-		<h3>{{ article.title }}</h3>
-		
-  		{{ article.content }}
+<div class="row">
 
-	{% endif %}
-    
-    <ul>
-		{% for article in blogs.news.articles limit: 5 %}
-			<li><a href="{{ article.url }}">{{ article.title }}</a></li>
-		{% endfor %}
-	</ul>
+	<div class="small-12 large-4 columns">
+		<h4>{{ blogs.news.title }}</h4>
+		<hr>
+	    <ul>
+			{% for article in blogs.news.articles limit: 5 %}
+				<li><a href="{{ article.url }}">{{ article.title }}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+
+	<div class="small-12 large-4 columns">
+		<h4>Something</h4>
+		<hr>
+	</div>
+
+	<div class="small-12 large-4 columns">
+		<h4>Something Else</h4>
+		<hr>
+	</div>
+
+</div>
+
+
+
+
+

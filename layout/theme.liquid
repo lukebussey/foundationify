@@ -39,21 +39,6 @@
 
             </nav>
         </div>
-
-        <div class="panel">
-            
-        <form action="/search" method="get">
-            <div class="row collapse">
-                <div class="small-10 columns">
-                    <input type="text" name="q" placeholder="">
-                </div>
-                <div class="small-2 columns">
-                    <button class="button prefix">Search</button>
-                </div>
-            </div>
-        </form>
-
-        </div>
         
         {{ content_for_layout }}
 
@@ -64,7 +49,7 @@
                 <p>© {{ "now" | date: "%Y" }} {{ shop.name }}.</p>
             </div>
 
-            <div class="small-8 text-right columns">
+            <div class="small-8 columns">
                 {% if linklists.footer.links.size > 0 %}
                     <ul class="inline-list">
                         {% for link in linklists.footer.links %}

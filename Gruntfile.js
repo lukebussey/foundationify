@@ -34,6 +34,10 @@ module.exports = function (grunt) {
             update: {
                 files: ['<%= yeoman.app %>/{layout,snippets,templates}/*.liquid'],
                 tasks: ['copy']
+            },
+            config: {
+                files: ['<%= yeoman.app %>/config/*.{html,json}'],
+                tasks: ['copy']
             }
         },
         clean: {

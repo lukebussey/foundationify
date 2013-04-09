@@ -3,6 +3,8 @@ Foundationify — Foundation 4 framework theme for Shopify
 
 Foundationify is a theme for Shopify, which is based on the responsive Zurb Foundation 4 framework.
 
+Foundationify makes it easy to get started on building your own Foundation based Shopify Theme.
+
 Requires Bower and Grunt.
 
 Run 'grunt' to build. Dist directory will contain built theme.
@@ -19,17 +21,17 @@ To Do
 1. Most page layouts
 2. Customer pages
 
-
 Working with the Shopify Theme Manager
 --------------------------------------
 
-1. Install a blank theme:
-https://github.com/lukebussey/shopify-blank-theme/archive/master.zip
-2. Optional: Rename Theme in Shopify to "Foundationify"
-3. Add your store and theme using the Shopify Theme Manager.
-4. Run 'grunt live' which will build the dist folder for Foundationify.
-5. Remove the downloaded folder and create a symlink to foundationify/dist
+1. Download the zip file of this blank theme: https://github.com/lukebussey/shopify-blank-theme/archive/master.zip
+2. Install the blank theme within Shopfy.
+3. Optionally rename the theme within Shopify.
+3. Using the Shopify Theme Manager, connect to your store and download the theme.
+4. Delete the downloaded folder, and recreate it as a symlink to your foundationify/dist folder.
+5. Run 'grunt live' which will build the dist folder for Foundationify.
 6. In the Shopify Theme Manager, force a deployment to upload the theme.
+7. Start making your changes and see them uploaded immediately to your store.
 
 MIT Open Source License
 =======================

@@ -61,7 +61,7 @@ module.exports = function (grunt) {
                 cssDir: '.tmp/styles',
                 imagesDir: '<%= yeoman.app %>/assets',
                 javascriptsDir: '<%= yeoman.app %>/scripts',
-                fontsDir: '<%= yeoman.app %>/fonts',
+                fontsDir: '<%= yeoman.app %>/assets',
                 importPath: 'components',
                 relativeAssets: true
             },
@@ -85,7 +85,8 @@ module.exports = function (grunt) {
                         '<%= yeoman.app %>/components/foundation/js/vendor/jquery.js'
                     ],
                     '<%= yeoman.dist %>/assets/main.js': [
-                        '<%= yeoman.app %>/components/foundation/js/foundation/*.js',
+                        '<%= yeoman.app %>/components/foundation/js/foundation/foundation.js',
+                        '<%= yeoman.app %>/components/foundation/js/foundation/foundation.*.js',
                         '<%= yeoman.app %>/scripts/{,*/}*.js'
                     ],
                 }
@@ -104,7 +105,8 @@ module.exports = function (grunt) {
                         '<%= yeoman.app %>/components/foundation/js/vendor/jquery.js'
                     ],
                     '<%= yeoman.dist %>/assets/main.js': [
-                        '<%= yeoman.app %>/components/foundation/js/foundation/*.js',
+                        '<%= yeoman.app %>/components/foundation/js/foundation/foundation.js',
+                        '<%= yeoman.app %>/components/foundation/js/foundation/foundation.*.js',
                         '<%= yeoman.app %>/scripts/{,*/}*.js'
                     ],
                 }
@@ -138,11 +140,18 @@ module.exports = function (grunt) {
                     cwd: '<%= yeoman.app %>',
                     dest: '<%= yeoman.dist %>',
                     src: [
-                        'assets/**',
-                        'config/**',
-                        'layout/**',
-                        'snippets/**',
-                        'templates/**'
+                        'assets/*',
+                        'config/*',
+                        'layout/*',
+                        'snippets/*',
+                        'templates/*',
+                    ]
+                },{
+                    expand: true,
+                    cwd: '<%= yeoman.app %>/components/font-awesome/font',
+                    dest: '<%= yeoman.dist %>/assets',
+                    src: [
+                        '*'
                     ]
                 }]
             },

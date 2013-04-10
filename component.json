@@ -2,7 +2,8 @@
   "name": "foundationify",
   "version": "0.0.1",
   "dependencies": {
-    "foundation": "~4.0.9"
+    "foundation": "~4.0.9",
+    "font-awesome": "~3.0.2"
   },
   "devDependencies": {}
 }

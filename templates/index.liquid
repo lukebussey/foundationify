@@ -1,55 +1,54 @@
-{% assign article = pages.frontpage %}
-{% if article.content != "" %}	
-	<div class="row">
-		<div class="small-12 columns">
-			<h1>{{ article.title }}</h1>
-		</div>
-		<div class="small-12 columns">
-			{{ article.content }}
-		</div>
-	</div>
-{% endif %}
-
 <div class="row">
 	<div class="small-12 columns">
-		<h3>{{ collections.frontpage.title }}</h3>
+
+		{% assign article = pages.frontpage %}
+
+		{% if article.content != "" %}
+			<div class="row">
+				<div class="small-12 columns">
+					<h1>{{ article.title }}</h1>
+					{{ article.content }}
+				</div>
+			</div>
+		{% endif %}
+
+
+		<h2>{{ collections.frontpage.title }}</h2>
 		{{ collections.frontpage.description }}
 		<hr>
-	</div>
-</div>
 
-<div class="row">
-	{% for product in collections.frontpage.products limit:3  %}
-		<div class="small-12 large-4 columns">
-			<a href="{{product.url}}">{{ product.featured_image | product_img_url: 'medium' | img_tag }}</a>
-			<h4 class="subheader"><a href="{{product.url}}">{{product.title}}</a></h4>
-			<p>{{product.price_min | money}}</p>
-		</div>
-	{% endfor %}
-</div>
-
-<div class="row">
-
-	<div class="small-12 large-4 columns">
-		<h4>{{ blogs.news.title }}</h4>
-		<hr>
-	    <ul>
-			{% for article in blogs.news.articles limit: 5 %}
-				<li><a href="{{ article.url }}">{{ article.title }}</a></li>
+		<div class="row">
+			{% for product in collections.frontpage.products | limit:3 %}
+				<div class="small-12 large-4 columns">
+					<a href="{{product.url}}">{{ product.featured_image | product_img_url: 'medium' | img_tag }}</a>
+					<h5 class="subheader"><a href="{{product.url}}">{{product.title}}</a></h5>
+					<p>{{product.price_min | money}}</p>
+					<hr>
+				</div>
 			{% endfor %}
-		</ul>
-	</div>
+		</div>
 
-	<div class="small-12 large-4 columns">
-		<h4>Something</h4>
-		<hr>
-	</div>
+		<div class="row">
+			<div class="small-12 large-8 columns">
+				<h4>{{ blogs.news.title }}</h4>
+				<hr>
 
-	<div class="small-12 large-4 columns">
-		<h4>Something Else</h4>
-		<hr>
-	</div>
+				{% for article in blogs.news.articles limit: 5 %}
+					<h5 class="subheader"><i class="icon-file"></i> <a href="{{ article.url }}">{{ article.title }}</a></h5>
+					<i>{{ article.published_at | date: "%B %d, %Y" }}</i>
+					{{ article.excerpt }}
+					<hr>
+				{% endfor %}
 
+			</div>
+
+			<div class="small-12 large-4 columns">
+				<h4>Something Else</h4>
+				<hr>
+			</div>
+		</div>
+
+	</div>
 </div>
 
 

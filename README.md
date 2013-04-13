@@ -1,7 +1,7 @@
 Foundationify — Foundation 4 framework theme for Shopify
 ========================================================
 
-Foundationify is a theme for Shopify, which is based on the responsive Zurb Foundation 4 framework.
+Foundationify is a theme for Shopify based on the responsive Zurb Foundation 4 framework.
 
 Foundationify makes it easy to get started on building your own Foundation based Shopify Theme.
 

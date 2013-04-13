@@ -1,35 +1,41 @@
-{% paginate collection.products by 12 %}
+<div class="row">
+    <div class="small-12 columns">
 
-	{% if collection.products.size == 0 %}
-		<p>No products found in this collection.</p>
-	{% else %}
+		{% paginate collection.products by 12 %}
 
-		<h2>{{ collection.title }}</h2>
+			{% if collection.products.size == 0 %}
+				<p>No products found in this collection.</p>
+			{% else %}
 
-		{{ collection.description }}
+				<h2>{{ collection.title }}</h2>
 
-		  {% for product in collection.products %}
-		  	<div>
-				<div>
-			      	<a href="{{ product.url | within: collection }}" title="{{ product.title }}">
-			       		<img src="{{ product.images.first | product_img_url: 'small' }}" alt="{{ product.title }}">
-			       	</a>
-				</div>
+				{{ collection.description }}
 
-			    <div>
-			    	<a href= "{{ product.url | within: collection }}">
-			    		{{ product.title | truncate: 30 }}</a><br>
-			      		<small>{{ product.price | money }}</small>
-			      	</a>
-			    </div>
-			</div>
-		    
-		  {% endfor %}
-		
-		{% if paginate.pages > 1 %}
-			<p>{{ paginate | default_pagination }}</p>
-		{% endif %}
+				  {% for product in collection.products %}
+				  	<div>
+						<div>
+					      	<a href="{{ product.url | within: collection }}" title="{{ product.title }}">
+					       		<img src="{{ product.images.first | product_img_url: 'small' }}" alt="{{ product.title }}">
+					       	</a>
+						</div>
 
-	{% endif %}
+					    <div>
+					    	<a href= "{{ product.url | within: collection }}">
+					    		{{ product.title | truncate: 30 }}</a><br>
+					      		<small>{{ product.price | money }}</small>
+					      	</a>
+					    </div>
+					</div>
+				    
+				  {% endfor %}
+				
+				{% if paginate.pages > 1 %}
+					<p>{{ paginate | default_pagination }}</p>
+				{% endif %}
 
-{% endpaginate %}
+			{% endif %}
+
+		{% endpaginate %}
+
+	</div>
+</div>

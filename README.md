@@ -1,9 +1,9 @@
-Foundationify — Foundation 4 framework theme for Shopify
+Foundationify — A [Foundation](http://foundation.zurb.com/) 4 based theme for Shopify
 ========================================================
 
-Foundationify is a theme for Shopify based on the responsive Zurb Foundation 4 framework.
+Foundationify is a theme for Shopify based on the responsive Zurb [Foundation](http://foundation.zurb.com/) 4 framework.
 
-Foundationify makes it easy to get started on building your own Foundation based Shopify Theme.
+Foundationify makes it easy to get started on building your own [Foundation](http://foundation.zurb.com/) based Shopify Theme.
 
 Requires Bower and Grunt.
 
@@ -21,8 +21,8 @@ To Do
 1. Most page layouts
 2. Customer pages
 
-Working with the Shopify Theme Manager
---------------------------------------
+Working with the Shopify Theme Manager (live updateing)
+-------------------------------------------------------
 
 1. Download the zip file of this blank theme: https://github.com/lukebussey/shopify-blank-theme/archive/master.zip
 2. Install the blank theme within Shopfy.

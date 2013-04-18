@@ -21,7 +21,7 @@ To Do
 1. Most page layouts
 2. Customer pages
 
-Working with the Shopify Theme Manager (live updateing)
+Working with the Shopify Theme Manager (live updating)
 -------------------------------------------------------
 
 1. Download the zip file of this blank theme: https://github.com/lukebussey/shopify-blank-theme/archive/master.zip

@@ -1,25 +1,28 @@
 <div class="row">
-    <div class="small-12 columns">
-
-        <h2>{{ product.title }}</h2>
-
-        {{ product.description }}
+    <div class="small-12 large-6 push-6 columns">
+        <h3>{{ product.title }}</h3>
 
         {% if product.available %}
-            <form action="/cart/add" method="post">
+            <form class="custom" action="/cart/add" method="post">
                 <select id="product-select" name='id'>
                     {% for variant in product.variants %}
                         <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
                     {% endfor %}
                 </select>
 
-                <input type="submit" value="Add to cart" id="addtocart" />
+                <input class="button" type="submit" value="Add to cart" id="addtocart">
             </form>
         {% else %}
             <p>Sorry, the product is not available.</p>
         {% endif %}
 
+        {{ product.description }}
 
+        <h4>Like what you see?</h4>
+        <p>Browse more {{ 'products like this' | link_to_type }} or more products by {{ product.vendor | link_to_vendor }}.</p>
+    </div>
+
+    <div class="small-12 large-6 pull-6 columns">
         {% for image in product.images %}
             {% if forloop.first %}
                 <a href="{{ image | product_img_url: 'large' }}" title="{{ product.title }}"><img src="{{ image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>
@@ -27,9 +30,5 @@
                 <a href="{{ image | product_img_url: 'large' }}"  title="{{ product.title }}"><img src="{{ image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" /></a>
             {% endif %}
         {% endfor %}
-
-        <h3>Like what you see?</h3>
-        <p>Browse more {{ 'products like this' | link_to_type }} or more products by {{ product.vendor | link_to_vendor }}.</p>
-
     </div>
 </div>

@@ -13,6 +13,8 @@ Curent Status
 -------------
 This project provides a working Shopify theme with all [Foundation](http://foundation.zurb.com/) 4 CSS and JavaScript available, ready for you start adding your own templates and building your own Shopify theme.
 
+Preview: http://foundationify.myshopify.com/
+
 Roadmap
 -------
 I'm currently working on building all of the necessary templates to provide a basic Shopify theme that can be used without 

@@ -5,20 +5,30 @@
 		{% if cart.item_count == 0 %}
 			<p>You have nothing in your cart.</p>
 		{% else %}
-		 
-			{% for item in cart.items %}
 
-				<p><img src="{{ item.product.images.first | product_img_url: 'thumb' }}" alt="{{ item.title | escape }}" /></p>
-				<p><a href="{{ item.product.url }}">{{ item.title }}</a></p>
-				
-				{{ item.product.description | strip_html | truncate: 120 }}
+			<table width="100%">
+				<thead>
+					<th></th>
+					<th>Item</th>
+					<th>Price</th>
+					<th>Quantity</th>
+					<th>Total</th>
+					<th></th>
+				</thead>
 
-				<div>{{ item.price | money }}</div>
-				<div>{{ item.quantity }}</div>
-				<div><a href="#">Remove</a> </div>
-				<div>{{ item.line_price | money }}</div>
-
-			{% endfor %}
+		 		<tbody>
+					{% for item in cart.items %}
+						<tr>
+							<td><img src="{{ item.product.images.first | product_img_url: 'thumb' }}" alt="{{ item.title | escape }}" /></td>
+							<td><a href="{{ item.product.url }}">{{ item.title }}</a></td>
+							<td>{{ item.price | money }}</td>
+							<td>{{ item.quantity }}</td>
+							<td>{{ item.line_price | money }}</td>
+							<td><a href="#"><i class="icon-trash"></i></a></td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
 
 
 		{% endif %}

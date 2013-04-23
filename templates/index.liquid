@@ -2,7 +2,6 @@
 	<div class="small-12 columns">
 
 		{% assign article = pages.frontpage %}
-
 		{% if article.content != "" %}
 			<div class="row">
 				<div class="small-12 text-center columns">
@@ -12,15 +11,45 @@
 			</div>
 		{% endif %}
 
+		<ul data-orbit data-options="bullets:false;" class="text-center">
+			<li>
+				<img src="http://placehold.it/1000x563">
+				<div class="orbit-caption">
+					<h2>Caption One.</h2> 
+					<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+					<a class="button" href="#">Learn More</a>
+				</div>
+			</li>
+			<li>
+				<img src="http://placehold.it/1000x563">
+				<div class="orbit-caption">
+					<h2>Caption Two.</h2>
+					<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+					<a class="button" href="#">Learn More</a>
+				</div>
+			</li>
+			<li>
+				<img src="http://placehold.it/1000x563">
+				<div class="orbit-caption">
+					<h2>Caption Three.</h2>
+					<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+					<a class="button" href="#">Learn More</a>
+				</div>
+			</li>
+		</ul>
 
-		<h2>{{ collections.frontpage.title }}</h2>
+
+
+		<h3>{{ collections.frontpage.title }}</h3>
 		{{ collections.frontpage.description }}
 		<hr>
 
 		<div class="row">
 			{% for product in collections.frontpage.products | limit:3 %}
 				<div class="small-12 large-4 columns">
-					<a href="{{product.url}}">{{ product.featured_image | product_img_url: 'medium' | img_tag }}</a>
+					<a href="{{product.url}}">
+						<img class="th" src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape }}">
+					</a>
 					<h5 class="subheader"><a href="{{product.url}}">{{product.title}}</a></h5>
 					<p>{{product.price_min | money}}</p>
 					<hr>
@@ -39,7 +68,6 @@
 					{{ article.excerpt }}
 					<hr>
 				{% endfor %}
-
 			</div>
 
 			<div class="small-12 large-4 columns">

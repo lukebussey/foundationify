@@ -1,5 +1,14 @@
 <div class="row">
     <div class="small-12 columns">
+        <ul class="breadcrumbs">
+            <li><a href="/">Home</a></li>
+            <li class="current"><a href="/cart">Cart</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div class="small-12 columns">
 
 		<h2>Your Cart</h2>
 		{% if cart.item_count == 0 %}
@@ -19,7 +28,7 @@
 		 		<tbody>
 					{% for item in cart.items %}
 						<tr>
-							<td><img src="{{ item.product.images.first | product_img_url: 'thumb' }}" alt="{{ item.title | escape }}" /></td>
+							<td><a href="{{ item.product.url }}"><img src="{{ item.product.images.first | product_img_url: 'icon' }}" alt="{{ item.title | escape }}" /></a></td>
 							<td><a href="{{ item.product.url }}">{{ item.title }}</a></td>
 							<td>{{ item.price | money }}</td>
 							<td>{{ item.quantity }}</td>

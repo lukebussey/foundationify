@@ -2,6 +2,7 @@
     <div class="small-12 columns">
         <ul class="breadcrumbs">
             <li><a href="/">Home</a></li>
+            <li><a href="/collections/">Collections</a>
             <li>{{ product.type | link_to_type }}</li>
         </ul>
     </div>
@@ -17,7 +18,7 @@
                 {% if product.variants.size == 1 %}
 
                     <p>
-                        {% if product.variants.first.compare_at_price > 0 %}<del>{{ product.variants.first.compare_at_price | money }}</del> Special{% endif %}
+                        {% if product.variants.first.compare_at_price > 0 %}<del>{{ product.variants.first.compare_at_price | money }}</del> {% endif %}
                         {{ product.variants.first.price | money }}
                     </p>
                     <input type="hidden" name="id" value="{{ product.variants.first.id }}">
@@ -33,7 +34,7 @@
                                     {% elsif checked %}
                                         checked{% assign checked = false %}
                                     {% endif %}>
-                                <span class="custom radio"></span> {{ variant.title }} – {% if variant.compare_at_price > 0 %}<del>{{ variant.compare_at_price | money }}</del> Special {% endif %}{{ variant.price | money }}
+                                <span class="custom radio"></span> {{ variant.title }} – {% if variant.compare_at_price > 0 %}<del>{{ variant.compare_at_price | money }}</del> {% endif %}{{ variant.price | money }}
                             </label>
                         {% endfor %}
                     </p>

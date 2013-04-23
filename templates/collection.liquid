@@ -7,31 +7,27 @@
 				<p>No products found in this collection.</p>
 			{% else %}
 
-				<h2>{{ collection.title }}</h2>
-
+				<h3>{{ collection.title }}</h3>
 				{{ collection.description }}
+				<hr>
 
-				  {% for product in collection.products %}
-				  	<div>
-						<div>
-					      	<a href="{{ product.url | within: collection }}" title="{{ product.title }}">
-					       		<img src="{{ product.images.first | product_img_url: 'small' }}" alt="{{ product.title }}">
-					       	</a>
-						</div>
+				{% for product in collection.products %}
+					{% capture cycle %}{% cycle '1', '2', '3', '4' %}{% endcapture %}
+					{% if cycle == '1' %}<div class="row">{% endif %}
 
-					    <div>
-					    	<a href= "{{ product.url | within: collection }}">
-					    		{{ product.title | truncate: 30 }}</a><br>
-					      		<small>{{ product.price | money }}</small>
-					      	</a>
-					    </div>
+					<div class="small-12 large-4 columns">
+						<a href="{{product.url}}">
+							<img class="th" src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape }}">
+						</a>
+						<h5 class="subheader"><a href="{{product.url}}">{{product.title}}</a></h5>
+						<p>{{product.price_min | money}}</p>
+						<hr>
 					</div>
-				    
-				  {% endfor %}
-				
-				{% if paginate.pages > 1 %}
-					<p>{{ paginate | default_pagination }}</p>
-				{% endif %}
+					
+					{% if cycle == '4' or forloop.last %}</div>{% endif %}
+				{% endfor %}
+					
+				{% include 'pagination' %}
 
 			{% endif %}
 

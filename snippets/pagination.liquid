@@ -1,0 +1,17 @@
+{% if paginate.pages > 1 %}
+	<ul class="pagination">
+		<li class="arrow{% unless paginate.previous %} unavailable{% endunless %}">{{ '&laquo;' | link_to: paginate.previous.url }}</li>
+		{% for part in paginate.parts %}
+			
+			{% if part.is_link %}
+				<li>{{ part.title | link_to: part.url }}</li>
+			{% elsif part.title == '&hellip;' %}
+				<li class="unavailable">…</li>
+			{% else %}
+				<li class="current">{{ part.title | link_to: part.url }}</li>
+			{% endif %}
+			
+		{% endfor %}
+		<li class="arrow{% unless paginate.next %} unavailable{% endunless %}">{{ '&raquo;' | link_to: paginate.next.url }}</li>
+	</ul>
+{% endif %}

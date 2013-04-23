@@ -16,29 +16,27 @@
         {{ content_for_header }}
     </head>
 
-    <body class="{{ template | replace: '.', ' ' | truncatewords: 1, '' }}" id="{{ page_title | handle }}">
-        
-        <div class="contain-to-grid">
-            <nav class="top-bar">
-                <ul class="title-area">
-                    <li class="name">
-                        <h1><a href="/"><i class="icon-home"></i>{{ shop.name }}</a></h1>
-                    </li>
-                    <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
-                </ul>
+    <body class="{{ template | replace: '.', ' ' | truncatewords: 1, '' }} antialiased" id="{{ page_title | handle }}">
+                
+        <nav class="top-bar">
+            <ul class="title-area">
+                <li class="name">
+                    <h1><a href="/"><i class="icon-home"></i>{{ shop.name }}</a></h1>
+                </li>
+                <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+            </ul>
 
-                <section class="top-bar-section">
-                    <ul class="right">
-                        {% for link in linklists.main-menu.links %}
-                            <li>{{ link.title | link_to: link.url }}</li>
-                        {% endfor %}
-                        <li class="divider"></li>
-                        <li><a href="/cart"><i class="icon-shopping-cart"></i> Cart ({{ cart.item_count}})</a></li>
-                    </ul 
-                </section>
+            <section class="top-bar-section">
+                <ul class="right">
+                    {% for link in linklists.main-menu.links %}
+                        <li>{{ link.title | link_to: link.url }}</li>
+                    {% endfor %}
+                    <li class="divider"></li>
+                    <li><a href="/cart"><i class="icon-shopping-cart"></i> Cart ({{ cart.item_count}})</a></li>
+                </ul 
+            </section>
 
-            </nav>
-        </div>
+        </nav>
         
         {{ content_for_layout }}
 

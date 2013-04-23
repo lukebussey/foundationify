@@ -1,34 +1,71 @@
 <div class="row">
-    <div class="small-12 large-6 push-6 columns">
-        <h3>{{ product.title }}</h3>
-
-        {% if product.available %}
-            <form class="custom" action="/cart/add" method="post">
-                <select id="product-select" name='id'>
-                    {% for variant in product.variants %}
-                        <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
-                    {% endfor %}
-                </select>
-
-                <input class="button" type="submit" value="Add to cart" id="addtocart">
-            </form>
-        {% else %}
-            <p>Sorry, the product is not available.</p>
-        {% endif %}
-
-        {{ product.description }}
-
-        <h4>Like what you see?</h4>
-        <p>Browse more {{ 'products like this' | link_to_type }} or more products by {{ product.vendor | link_to_vendor }}.</p>
-    </div>
-
-    <div class="small-12 large-6 pull-6 columns">
-        {% for image in product.images %}
-            {% if forloop.first %}
-                <a href="{{ image | product_img_url: 'large' }}" title="{{ product.title }}"><img src="{{ image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" /></a>
-            {% else %}
-                <a href="{{ image | product_img_url: 'large' }}"  title="{{ product.title }}"><img src="{{ image | product_img_url: 'small' }}" alt="{{ product.title | escape }}" /></a>
-            {% endif %}
-        {% endfor %}
+    <div class="small-12 columns">
+        <ul class="breadcrumbs">
+            <li><a href="/">Home</a></li>
+            <li>{{ product.type | link_to_type }}</li>
+        </ul>
     </div>
 </div>
+
+<div class="row">
+    <form class="custom" action="/cart/add" method="post">
+        <div class="small-12 large-6 push-6 columns">
+            <h3>{{ product.title }}</h3>
+
+            {% if product.available %}
+
+                {% if product.variants.size == 1 %}
+
+                    <p>
+                        {% if product.variants.first.compare_at_price > 0 %}<del>{{ product.variants.first.compare_at_price | money }}</del> Special{% endif %}
+                        {{ product.variants.first.price | money }}
+                    </p>
+                    <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+                
+                {% else %}
+                    <p>
+                        {% assign checked = true %}
+                        {% for variant in product.variants %}
+                            <label for="radio">
+                                <input name="id" type="radio" id="radio" value="{{ variant.id }}"
+                                    {% if variant.available == false %} 
+                                        disabled
+                                    {% elsif checked %}
+                                        checked{% assign checked = false %}
+                                    {% endif %}>
+                                <span class="custom radio"></span> {{ variant.title }} – {% if variant.compare_at_price > 0 %}<del>{{ variant.compare_at_price | money }}</del> Special {% endif %}{{ variant.price | money }}
+                            </label>
+                        {% endfor %}
+                    </p>
+                    
+                {% endif %}
+                
+
+
+                    <button class="radius" type="submit"><i class="icon-shopping-cart"></i> Add to cart</button>
+                
+
+
+            {% else %}
+                <p>Sorry, the product is not available.</p>
+            {% endif %}
+
+            {{ product.description }}
+
+        </div>
+    </form>
+
+    <div class="small-12 large-6 pull-6 columns">
+        <p><img class="th" src="{{ product.featured_image | product_img_url: 'grande' }}" alt="{{ product.title | escape }}"></p>
+
+        <ul class="large-block-grid-4">
+            {% for image in product.images %}                
+                <li><a href="{{ image | product_img_url: 'grande' }}" title="{{ product.title }}"><img class="th" src="{{ image | product_img_url: 'small' }}" alt="{{ product.title | escape }}"></a></li>
+            {% endfor %}        
+        </ul>
+    </div>
+</div>
+
+            
+               
+            

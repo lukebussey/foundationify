@@ -1,0 +1,8 @@
+<li>
+	<a href="{{product.url}}">
+		<img class="th" src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape }}">
+	</a>
+	<h5 class="subheader"><a href="{{product.url}}">{{product.title}}</a></h5>
+	<p>{{product.price_min | money}}</p>
+	<hr>
+</li>

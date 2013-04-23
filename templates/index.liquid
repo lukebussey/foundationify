@@ -44,23 +44,11 @@
 		{{ collections.frontpage.description }}
 		<hr>
 
-		
-		{% for product in collections.frontpage.products | limit:3 %}
-			{% capture cycle %}{% cycle '1', '2', '3' %}{% endcapture %}
-			{% if cycle == '1' %}<div class="row">{% endif %}
-
-			<div class="small-12 large-4 columns">
-				<a href="{{product.url}}">
-					<img class="th" src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape }}">
-				</a>
-				<h5 class="subheader"><a href="{{product.url}}">{{product.title}}</a></h5>
-				<p>{{product.price_min | money}}</p>
-				<hr>
-			</div>
-
-			{% if cycle == '3' or forloop.last %}</div>{% endif %}
-		{% endfor %}
-		
+		<ul class="small-block-grid-3">
+			{% for product in collections.frontpage.products %}
+				{% include 'product' with product %}
+			{% endfor %}
+		</ul>
 
 		<div class="row">
 			<div class="small-12 large-8 columns">

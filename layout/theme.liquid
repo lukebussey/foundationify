@@ -38,7 +38,11 @@
 
         </nav>
         
-        {{ content_for_layout }}
+        {% if template == 'list-collections' %}
+            {% include 'collection-listing' %}
+        {% else %}
+            {{ content_for_layout }}
+        {% endif %}
 
         <hr>
 

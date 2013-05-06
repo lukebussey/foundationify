@@ -1,6 +1,12 @@
 <div class="row">
     <div class="small-12 columns">
 
+    	<ul class="breadcrumbs">
+            <li><a href="/">Home</a></li>
+            <li><a href="/collections/">Collections</a>
+            <li class="current"><a href="{{ collection.url }}">{{ collection.title }}</a></li>
+        </ul>
+
 		{% paginate collection.products by 12 %}
 
 			{% if collection.products.size == 0 %}

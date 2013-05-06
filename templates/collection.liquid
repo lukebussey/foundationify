@@ -1,20 +1,38 @@
 <div class="row">
     <div class="small-12 columns">
 
-    	<ul class="breadcrumbs">
-            <li><a href="/">Home</a></li>
-            <li><a href="/collections/">Collections</a>
-            <li class="current"><a href="{{ collection.url }}">{{ collection.title }}</a></li>
-        </ul>
-
 		{% paginate collection.products by 12 %}
 
+	    	<ul class="breadcrumbs">
+	            <li><a href="/">Home</a></li>
+	            <li><a href="/collections/">Collections</a>
+	            <li class="current"><a href="{{ collection.url }}">{{ collection.title }}</a></li>
+	        </ul>
+
 			{% if collection.products.size == 0 %}
-				<p>No products found in this collection.</p>
+				
+				<p>No products were found in this collection.</p>
+
 			{% else %}
 
 				<h3>{{ collection.title }}</h3>
+				
 				{{ collection.description }}
+
+		        {% if collection.all_tags.size > 0 %}
+		        	<dl class="sub-nav">
+		        		<dt>Filter:</dt>
+						<dd{% unless current_tags %} class="active"{% endunless %}><a href="/collections/{{ collection.handle }}">All</a></dd>
+						{% for tag in collection.all_tags %}
+							{% if current_tags contains tag %}
+								<dd class="active">{{ tag | link_to_remove_tag: tag }}</dd>
+							{% else %}
+								<dd>{{ tag | link_to_tag: tag }}</dd>
+							{% endif %}
+						{% endfor %}
+					</dl>
+				{% endif %}
+
 				<hr>
 
 				<ul class="small-block-grid-2 large-block-grid-3">

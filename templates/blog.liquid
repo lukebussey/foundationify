@@ -11,7 +11,7 @@
 		{% paginate blog.articles by 10 %}
 			
 			{% for article in blog.articles  %}
-				<h3><a href="{{article.url}}">{{ article.title }}</a></h3>
+				<h3><i class="icon-file"></i> <a href="{{article.url}}">{{ article.title }}</a></h3>
 
 				<p>
 					By {{ article.author }}<br>

@@ -56,8 +56,19 @@
 				<hr>
 
 				{% for article in blogs.news.articles limit: 5 %}
-					<h5 class="subheader"><i class="icon-file"></i> <a href="{{ article.url }}">{{ article.title }}</a></h5>
-					<i>{{ article.published_at | date: "%B %d, %Y" }}</i>
+					<h5><i class="icon-file"></i> <a href="{{ article.url }}">{{ article.title }}</a></h5>
+					<p>
+						By {{ article.author }}<br>
+						Posted on {{ article.created_at | date: "%B %d, %Y" }}
+						{% if article.comments_enabled? %}
+			       			{% if article.comments_count == 0 %}
+								| 0 comments
+							{% else %}
+			 					| <a href="{{article.url}}#comments">{{ article.comments_count }} comments</a>
+							{% endif %}
+			       		{% endif %}
+					</p>
+
 					{{ article.excerpt }}
 					<hr>
 				{% endfor %}

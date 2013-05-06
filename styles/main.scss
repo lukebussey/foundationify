@@ -15,3 +15,13 @@
 // Font Awesome
 @import "font-awesome/sass/font-awesome.scss";
 
+
+// remove bottom margin on form elements used within tables
+table {
+
+	input[type],
+	button,
+	.button {
+		margin-bottom: 0;
+	}
+}

@@ -7,6 +7,8 @@
     </div>
 </div>
 
+<form action="/cart" method="post" id="cartform">
+
 <div class="row">
     <div class="small-12 columns">
 
@@ -20,7 +22,7 @@
 					<th></th>
 					<th>Item</th>
 					<th>Price</th>
-					<th>Quantity</th>
+					<th colspan="2">Quantity</th>
 					<th>Total</th>
 					<th></th>
 				</thead>
@@ -28,12 +30,13 @@
 		 		<tbody>
 					{% for item in cart.items %}
 						<tr>
-							<td><a href="{{ item.product.url }}"><img src="{{ item.product.images.first | product_img_url: 'icon' }}" alt="{{ item.title | escape }}" /></a></td>
+							<td><a href="{{ item.product.url }}"><img class="th" src="{{ item.product.images.first | product_img_url: 'icon' }}" alt="{{ item.title | escape }}" /></a></td>
 							<td><a href="{{ item.product.url }}">{{ item.title }}</a></td>
 							<td>{{ item.price | money }}</td>
-							<td>{{ item.quantity }}</td>
+							<td><input type="number" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}"></td>
+							<td><button class="button radius small secondary" type="submit" title="Update Cart"><i class="icon-refresh"></i></button></td>
 							<td>{{ item.line_price | money }}</td>
-							<td><a href="#"><i class="icon-trash"></i></a></td>
+							<td><a class="button radius small secondary" href="/cart/change?line={{ forloop.index }}&quantity=0" title="Remove"><i class="icon-remove"></i></a></td>
 						</tr>
 					{% endfor %}
 				</tbody>
@@ -41,8 +44,13 @@
 
 			<h4>Subtotal: {{ cart.total_price | money }}</h4>
 
+			<button class="button radius secondary" type="submit"><i class="icon-refresh"></i> Update Cart</button>
+			
+			<button class="button radius" type="submit" name="checkout"><i class="icon-credit-card"></i> Check Out</button>
 
 		{% endif %}
 
 	</div>
 </div>
+
+</form>

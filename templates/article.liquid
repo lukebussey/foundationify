@@ -1,68 +1,79 @@
 <div class="row">
     <div class="small-12 columns">
 
+    	<ul class="breadcrumbs">
+            <li><a href="/">Home</a></li>
+            <li><a href="{{ blog.url }}">{{ blog.title }}</a>
+        </ul>
+
 		<h2>{{ article.title }}</h2>
 
-		<p>{{ article.author }}</p>
-		<p>Posted on {{ article.created_at | date: "%B %d, '%y" }}</p>
+		<p>
+			By {{ article.author }}<br>
+			Posted in <a href="{{ blog.url }}">{{ blog.title }}</a>, on {{ article.created_at | date: "%B %d, %Y" }}
+		</p>
 
 		{{ article.content }}
 
-		<ul>
-			{% for comment in article.comments %}
-		    	<li>
-		    		{{ comment.content }}
-		      		Posted by {{ comment.author }} on {{ comment.created_at | date: "%B %d, %Y" }}
-		  		</li>
-			{% endfor %}
-		</ul>
+		{% if article.comments_enabled? %}
 
+			<hr>
+	
+			<h3 id="comments">Comments</h3>
 			
-		{% form article %}
-			<h3>Leave a comment</h3>
+			{% form article %}
 
-			{% if form.posted_successfully? %}
-				{% if blog.moderated? %}
-		    		<p>
-		      			Successfully posted your comment.<br>
-		      			It will have to be approved by the blog owner first before showing up.
-		    		</p>
-		  		{% else %}
-		    		<p>Successfully posted your comment.</p>
-		  		{% endif %}
-			{% endif %}
+				{% if form.posted_successfully? %}
+					{% if blog.moderated? %}
+						<div data-alert class="alert-box success">
+							Your comment was successfully posted. It will have to be approved by the blog owner first before appearing.
+							<a href="#" class="close">&times;</a>
+						</div>
+			  		{% else %}
+				  		<div data-alert class="alert-box success">
+							Your comment was successfully posted. If it doesn't appear immediately, then it will have to be approved by the blog owner first.
+							<a href="#" class="close">&times;</a>
+						</div>
+			  		{% endif %}
+			  	{% endif %}
 
-			{% if form.errors %}
-		  		<p>Not all the fields have been filled out correctly!</p>
-			{% endif %}
+				{% for comment in article.comments %}
+			    	<blockquote>
+			    		{{ comment.content }}<cite>{{ comment.author }} on {{ comment.created_at | date: "%B %d, %Y" }}</cite>
+			  		</blockquote>
+				{% endfor %}
 
-			<dl>
-		  		<dt class="{% if form.errors contains 'author' %}error{% endif %}"><label for="comment_author">Your name</label></dt>
-		  		<dd>
-					<input type="text" id="comment_author" name="comment[author]" size="40" value="{{form.author}}" class="{% if form.errors contains 'author' %}input-error{% endif %}" />
-				</dd>
+				{% unless form.posted_successfully? %}
+			  		<h3>Leave a comment</h3>
 
-		  		<dt class="{% if form.errors contains 'email' %}error{% endif %}">
-					<label for="comment_email">Your email</label>
-				</dt>
-		  		<dd>
-					<input type="text" id="comment_email" name="comment[email]" size="40" value="{{form.email}}" class="{% if form.errors contains 'email' %}input-error{% endif %}" />
-				</dd>
+			  		{% if form.errors %}
+			  			<small class="error">Your comment submission contained errors, please review them below.</small>
+					{% endif %}
 
-		  		<dt class="{% if form.errors contains 'body' %}error{% endif %}">
-					<label for="comment_body">Your comment</label>
-				</dt>
-		  		<dd>
-					<textarea id="comment_body" name="comment[body]" cols="40" rows="5" class="{% if form.errors contains 'body' %}input-error{% endif %}">{{form.body}}</textarea>
-				</dd>
-			</dl>
+					<label for="comment_author" class="{% if form.errors contains 'author' %}error{% endif %}">Your name</label>
+					<input type="text" id="comment_author" name="comment[author]" size="40" value="{{form.author}}" class="{% if form.errors contains 'author' %}error{% endif %}">
+					{% if form.errors contains 'author' %}<small class="error">Your name is required.</small>{% endif %}
+						
+					<label for="comment_email" class="{% if form.errors contains 'email' %}error{% endif %}">Your email address</label>
+					<input type="text" id="comment_email" name="comment[email]" size="40" value="{{form.email}}" class="{% if form.errors contains 'email' %}error{% endif %}">
+					{% if form.errors contains 'email' %}<small class="error">A valid email address is required.</small>{% endif %}
 
-			{% if blog.moderated? %}
-		  		<p>comments have to be approved before showing up.</p>
-			{% endif %}    
+					<label for="comment_body" class="{% if form.errors contains 'body' %}error{% endif %}">Your comment</label>
+					<textarea id="comment_body" name="comment[body]" cols="40" rows="5" class="{% if form.errors contains 'body' %}error{% endif %}">{{form.body}}</textarea>
+					{% if form.errors contains 'body' %}<small class="error">A comment is required.</small>{% endif %}
 
-			<input type="submit" value="Post comment" />
-		{% endform %}
+					{% if blog.moderated? %}
+				  		<p>comments have to be approved before showing up.</p>
+					{% endif %}    
+
+					<button class="button radius" type="submit"><i class="icon-comment"></i> Add Comment</button>
+
+				{% endunless %}
+
+			{% endform %}
+
+		{% endif %}
+		
 	
 	</div>
 </div>

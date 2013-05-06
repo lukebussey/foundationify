@@ -11,20 +11,26 @@
 <div class="row">
     <form class="custom" action="/cart/add" method="post">
         <div class="small-12 large-6 push-6 columns">
+            
             <h3>{{ product.title }}</h3>
+            
+            <h5 class="subheader">{{ product.vendor | link_to_vendor  }}</h5>
+            
+            <hr>
 
             {% if product.available %}
 
                 {% if product.variants.size == 1 %}
 
-                    <p>
+                    <h4>
                         {% if product.variants.first.compare_at_price > 0 %}<del>{{ product.variants.first.compare_at_price | money }}</del> {% endif %}
                         {{ product.variants.first.price | money }}
-                    </p>
+                    </h4>
                     <input type="hidden" name="id" value="{{ product.variants.first.id }}">
                 
                 {% else %}
-                    <p>
+
+                    <h4>
                         {% assign checked = true %}
                         {% for variant in product.variants %}
                             <label for="radio">
@@ -37,19 +43,17 @@
                                 <span class="custom radio"></span> {{ variant.title }} – {% if variant.compare_at_price > 0 %}<del>{{ variant.compare_at_price | money }}</del> {% endif %}{{ variant.price | money }}
                             </label>
                         {% endfor %}
-                    </p>
+                    </h4>
                     
                 {% endif %}
-                
-
 
                 <button class="button radius" type="submit"><i class="icon-shopping-cart"></i> Add to cart</button>
-                
-
 
             {% else %}
                 <p>Sorry, the product is not available.</p>
             {% endif %}
+
+            <h5>Description</h5>
 
             {{ product.description }}
 

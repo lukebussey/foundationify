@@ -2,7 +2,11 @@
 	<a href="{{product.url}}">
 		<img class="th" src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape }}">
 	</a>
-	<h5 class="subheader"><a href="{{product.url}}">{{product.title}}</a></h5>
-	<p> {% if product.price_varies %}From {% endif %}{{product.price_min | money}}</p>
+	<h5 class="subheader"><a href="{{product.url}}">{{ product.title }}</a></h5>
+	<p>
+		{% if product.price_varies %}From {% endif %}
+		{% if product.compare_at_price > 0 %}<del>{{ product.compare_at_price | money }}</del> {% endif %}
+		{{ product.price_min | money }}
+	</p>
 	<hr>
 </li>

@@ -20,10 +20,10 @@ Roadmap
 I'm currently working on building all of the necessary templates to provide a basic Shopify theme that can be used without 
 any modifications. Once complete this will be consided version 1.0.0.
 
-To Do
+To Do – 5/12/13
 -----
-1. Most page layouts
-2. Customer pages
+1. Customer pages
+2. Product gallery images
 
 Getting Started
 ---------------

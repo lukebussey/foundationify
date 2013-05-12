@@ -33,6 +33,10 @@
                     {% endfor %}
                     <li class="divider"></li>
                     <li><a href="/cart"><i class="icon-shopping-cart"></i> Cart ({{ cart.item_count}})</a></li>
+                    {% if cart.item_count > 0 %}
+                    <li class="divider"></li>
+                    <li><a class="button" href="/checkout"><i class="icon-credit-card"></i> Check Out</a></li>
+                    {% endif %}
                 </ul 
             </section>
 

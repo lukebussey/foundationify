@@ -13,6 +13,8 @@
         
         {{ 'custom.modernizr.js' | asset_url | script_tag }}
 
+        <link rel="canonical" href="{{ canonical_url }}">
+
         {{ content_for_header }}
     </head>
 
@@ -57,11 +59,11 @@
 
             <div class="small-8 columns">
                 {% if linklists.footer.links.size > 0 %}
-                    <ul class="inline-list">
+                    <ul class="inline-list right">
                         {% for link in linklists.footer.links %}
-                            <li><a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a></li>
+                            <li><a href="{{ link.url }}" title="{{ link.title | strip_html }}">{{ link.title }}</a></li>
                         {% endfor %}
-                    </ul
+                    </ul>
                 {% endif %}
             </div>
         </div>

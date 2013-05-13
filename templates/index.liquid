@@ -38,8 +38,6 @@
 			</li>
 		</ul>
 
-
-
 		<h3>{{ collections.frontpage.title }}</h3>
 		{{ collections.frontpage.description }}
 		<hr>
@@ -56,7 +54,7 @@
 				<hr>
 
 				{% for article in blogs.news.articles limit: 5 %}
-					<h5><i class="icon-file"></i> <a href="{{ article.url }}">{{ article.title }}</a></h5>
+					<h5><a href="{{ article.url }}"><i class="icon-file"></i> {{ article.title }}</a></h5>
 					<p>
 						By {{ article.author }}<br>
 						Posted on {{ article.created_at | date: "%B %d, %Y" }}
@@ -64,7 +62,7 @@
 			       			{% if article.comments_count == 0 %}
 								| 0 comments
 							{% else %}
-			 					| <a href="{{article.url}}#comments">{{ article.comments_count }} comments</a>
+			 					| <a href="{{article.url}}#comments"><i class="icon-comments"></i> {{ article.comments_count }} comments</a>
 							{% endif %}
 			       		{% endif %}
 					</p>
@@ -75,8 +73,15 @@
 			</div>
 
 			<div class="small-12 large-4 columns">
-				<h4>Something Else</h4>
+				<h4>Connect with us</h4>
 				<hr>
+				{% if linklists.social.links.size > 0 %}
+                    <ul class="side-nav">
+                        {% for link in linklists.social.links %}
+                            <li><a href="{{ link.url }}" title="{{ link.title | strip_html }}">{{ link.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
 			</div>
 		</div>
 

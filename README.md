@@ -5,6 +5,8 @@ Foundationify is a theme for Shopify based on the responsive Zurb [Foundation](h
 
 Foundationify makes it easy to get started on building your own [Foundation](http://foundation.zurb.com/) based Shopify Theme.
 
+Foundationify is brought to you by [Tools for Living](http://www.toolsforliving.com/)
+
 Requires Bower and Grunt.
 
 Run `grunt` to build. The dist directory will contain the built theme.

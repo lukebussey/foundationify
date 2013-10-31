@@ -9,7 +9,7 @@ Foundationify is brought to you by [Tools for Living](http://www.toolsforliving.
 
 Requires Bower and Grunt.
 
-Run `grunt` to build. The dist directory will contain the built theme.
+Run `grunt build` to build. The dist directory will contain the built theme.
 
 Curent Status
 -------------
@@ -31,7 +31,7 @@ Getting Started
 ---------------
 1. Checkout project.
 2. Run `npm install && bower install`.
-3. Run `grunt`.
+3. Run `grunt build`.
 4. Theme will be built into the /dist folder.
 
 Working with the Shopify Theme Manager (live updating)

@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-
-<html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en">
     <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>{{ shop.name }} | {{ page_title }}</title>
 
@@ -67,10 +65,6 @@
                 {% endif %}
             </div>
         </div>
-
-        <script>
-            document.write('<script src=' + ('__proto__' in {} ? '{{ 'zepto.js' | asset_url }}' : '{{ 'jquery.js' | asset_url }}') + '><\/script>');
-        </script>
 
         {{ 'main.js' | asset_url | script_tag }}
 

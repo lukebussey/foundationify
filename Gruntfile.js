@@ -78,13 +78,8 @@ module.exports = function (grunt) {
                     '<%= yeoman.dist %>/assets/custom.modernizr.js': [
                         '<%= yeoman.app %>/components/foundation/js/vendor/custom.modernizr.js'
                     ],
-                    '<%= yeoman.dist %>/assets/zepto.js': [
-                        '<%= yeoman.app %>/components/foundation/js/vendor/zepto.js'
-                    ],
-                    '<%= yeoman.dist %>/assets/jquery.js': [
-                        '<%= yeoman.app %>/components/foundation/js/vendor/jquery.js'
-                    ],
                     '<%= yeoman.dist %>/assets/main.js': [
+                        '<%= yeoman.app %>/components/foundation/js/vendor/jquery.js',
                         '<%= yeoman.app %>/components/foundation/js/foundation/foundation.js',
                         '<%= yeoman.app %>/components/foundation/js/foundation/foundation.*.js',
                         '<%= yeoman.app %>/scripts/{,*/}*.js'
@@ -98,13 +93,8 @@ module.exports = function (grunt) {
                     '<%= yeoman.dist %>/assets/custom.modernizr.js': [
                         '<%= yeoman.app %>/components/foundation/js/vendor/custom.modernizr.js'
                     ],
-                    '<%= yeoman.dist %>/assets/zepto.js': [
-                        '<%= yeoman.app %>/components/foundation/js/vendor/zepto.js'
-                    ],
-                    '<%= yeoman.dist %>/assets/jquery.js': [
-                        '<%= yeoman.app %>/components/foundation/js/vendor/jquery.js'
-                    ],
                     '<%= yeoman.dist %>/assets/main.js': [
+                        '<%= yeoman.app %>/components/foundation/js/vendor/jquery.js',
                         '<%= yeoman.app %>/components/foundation/js/foundation/foundation.js',
                         '<%= yeoman.app %>/components/foundation/js/foundation/foundation.*.js',
                         '<%= yeoman.app %>/scripts/{,*/}*.js'

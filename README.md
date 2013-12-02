@@ -1,7 +1,7 @@
-Foundationify — A [Foundation](http://foundation.zurb.com/) 4 based theme for Shopify
+Foundationify — A [Foundation](http://foundation.zurb.com/) 5 based theme for Shopify
 ========================================================
 
-Foundationify is a theme for Shopify based on the responsive Zurb [Foundation](http://foundation.zurb.com/) 4 framework.
+Foundationify is a theme for Shopify based on the responsive Zurb [Foundation](http://foundation.zurb.com/) 5 framework.
 
 Foundationify makes it easy to get started on building your own [Foundation](http://foundation.zurb.com/) based Shopify Theme.
 
@@ -13,7 +13,7 @@ Run `grunt build` to build. The dist directory will contain the built theme.
 
 Curent Status
 -------------
-This project provides a working Shopify theme with all [Foundation](http://foundation.zurb.com/) 4 CSS and JavaScript available, ready for you start adding your own templates and building your own Shopify theme.
+This project provides a working Shopify theme with all [Foundation](http://foundation.zurb.com/) 5 CSS and JavaScript available, ready for you start adding your own templates and building your own Shopify theme.
 
 Preview: http://foundationify.myshopify.com/
 
@@ -22,10 +22,9 @@ Roadmap
 I'm currently working on building all of the necessary templates to provide a basic Shopify theme that can be used without 
 any modifications. Once complete this will be consided version 1.0.0.
 
-To Do – 5/12/13
+To Do – 12/2/13
 -----
 1. Customer pages
-2. Product gallery images
 
 Getting Started
 ---------------

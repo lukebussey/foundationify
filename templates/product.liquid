@@ -10,7 +10,7 @@
 
 <div class="row">
     <form class="custom" action="/cart/add" method="post">
-        <div class="small-12 large-6 push-6 columns">
+        <div class="small-12 medium-6 push-6 columns">
             
             <h3>{{ product.title }}</h3>
             
@@ -60,11 +60,11 @@
         </div>
     </form>
 
-    <div id="product-images" class="small-12 large-6 pull-6 columns">
+    <div id="product-images" class="small-12 medium-6 pull-6 columns">
         <p><img class="th" src="{{ product.featured_image | product_img_url: 'grande' }}" alt="{{ product.title | escape }}"></p>
 
         {% if product.images.size > 1 %}
-            <ul class="large-block-grid-4">
+            <ul class="medium-block-grid-4">
                 {% for image in product.images %}                
                     <li><a href="{{ image | product_img_url: 'grande' }}" title="{{ product.title }}"><img class="th" src="{{ image | product_img_url: 'small' }}" alt="{{ product.title | escape }}"></a></li>
                 {% endfor %}        

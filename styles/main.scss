@@ -3,6 +3,9 @@
 
 @import "compass/css3";
 
+// Foundation Functions (so you can use rem-calc in settings)
+@import "foundation/scss/foundation/functions";
+
 // Foundationify Settings
 @import "settings";
 
@@ -18,7 +21,6 @@
 
 // remove bottom margin on form elements used within tables (for cart page)
 table {
-
 	input[type],
 	button,
 	.button {

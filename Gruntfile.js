@@ -33,11 +33,11 @@ module.exports = function (grunt) {
             },
             update: {
                 files: ['<%= yeoman.app %>/{layout,snippets,templates}/*.liquid'],
-                tasks: ['copy']
+                tasks: ['sync']
             },
             config: {
                 files: ['<%= yeoman.app %>/config/*.{html,json}'],
-                tasks: ['copy']
+                tasks: ['sync']
             }
         },
         clean: {
@@ -120,6 +120,21 @@ module.exports = function (grunt) {
                         '<%= yeoman.app %>/styles/{,*/}*.css'
                     ]
                 }
+            }
+        },
+        sync: {
+            main: {
+                files: [{
+                  cwd: '<%= yeoman.app %>',
+                  src: [
+                            'assets/*',
+                            'config/*',
+                            'layout/*',
+                            'snippets/*',
+                            'templates/*',
+                        ],
+                  dest: '<%= yeoman.dist %>',
+                }]
             }
         },
         copy: {

@@ -125,15 +125,15 @@ module.exports = function (grunt) {
         sync: {
             main: {
                 files: [{
-                  cwd: '<%= yeoman.app %>',
-                  src: [
-                            'assets/*',
-                            'config/*',
-                            'layout/*',
-                            'snippets/*',
-                            'templates/*',
-                        ],
-                  dest: '<%= yeoman.dist %>',
+                    cwd: '<%= yeoman.app %>',
+                    src: [
+                        'assets/*',
+                        'config/*',
+                        'layout/*',
+                        'snippets/*',
+                        'templates/*',
+                    ],
+                    dest: '<%= yeoman.dist %>',
                 }]
             }
         },

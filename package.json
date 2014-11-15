@@ -1,25 +1,29 @@
 {
   "name": "foundationify",
   "version": "0.0.5",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lukebussey/foundationify.git"
+  },
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.0",
-    "grunt-contrib-copy": "~0.4.0",
-    "grunt-contrib-concat": "~0.1.2",
-    "grunt-contrib-coffee": "~0.4.0",
-    "grunt-contrib-uglify": "~0.1.1",
-    "grunt-contrib-compass": "~0.1.2",
-    "grunt-sync": "~0.0.6",
-    "grunt-contrib-jshint": "~0.1.1",
-    "grunt-contrib-cssmin": "~0.4.1",
-    "grunt-contrib-connect": "0.1.2",
     "grunt-contrib-clean": "0.4.0",
+    "grunt-contrib-coffee": "~0.4.0",
+    "grunt-contrib-compass": "~0.1.2",
+    "grunt-contrib-concat": "~0.1.2",
+    "grunt-contrib-connect": "0.1.2",
+    "grunt-contrib-copy": "~0.4.0",
+    "grunt-contrib-cssmin": "~0.4.1",
     "grunt-contrib-htmlmin": "0.1.1",
     "grunt-contrib-imagemin": "0.1.2",
+    "grunt-contrib-jshint": "~0.1.1",
+    "grunt-contrib-uglify": "~0.1.1",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-usemin": "~0.1.9",
     "grunt-open": "~0.2.0",
-    "matchdep": "~0.1.1"
+    "grunt-sync": "~0.0.6",
+    "grunt-usemin": "~0.1.9",
+    "load-grunt-tasks": "^1.0.0"
   },
   "engines": {
     "node": ">=0.8.0"

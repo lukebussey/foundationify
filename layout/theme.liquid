@@ -8,7 +8,7 @@
         <title>{{ shop.name }} | {{ page_title }}</title>
 
         {{ 'main.css' | asset_url | stylesheet_tag }}
-        
+
         {{ 'custom.modernizr.js' | asset_url | script_tag }}
 
         <link rel="canonical" href="{{ canonical_url }}">
@@ -17,7 +17,7 @@
     </head>
 
     <body class="{{ template | replace: '.', ' ' | truncatewords: 1, '' }} antialiased" id="{{ page_title | handle }}">
-                
+
         <nav class="top-bar" data-topbar>
             <ul class="title-area">
                 <li class="name">
@@ -37,11 +37,11 @@
                     <li class="divider"></li>
                     <li class="has-form"><a class="button" href="/checkout"><i class="icon-credit-card"></i> Check Out</a></li>
                     {% endif %}
-                </ul 
+                </ul>
             </section>
 
         </nav>
-        
+
         {% if template == 'list-collections' %}
             {% include 'collection-listing' %}
         {% else %}

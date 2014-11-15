@@ -163,8 +163,6 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.renameTask('regarde', 'watch');
-
     grunt.registerTask('live', [
         'clean:dist',
         'compass:live',

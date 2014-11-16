@@ -63,7 +63,7 @@ module.exports = function (grunt) {
                 imagesDir: '<%= config.app %>/assets',
                 javascriptsDir: '<%= config.app %>/scripts',
                 fontsDir: '<%= config.app %>/assets',
-                importPath: 'components',
+                importPath: 'bower_components',
                 relativeAssets: true
             },
             dist: {},
@@ -77,12 +77,12 @@ module.exports = function (grunt) {
             dist: {
                 files: {
                     '<%= config.dist %>/assets/modernizr.js': [
-                        '<%= config.app %>/components/foundation/js/vendor/modernizr.js'
+                        '<%= config.app %>/bower_components/foundation/js/vendor/modernizr.js'
                     ],
                     '<%= config.dist %>/assets/main.js': [
-                        '<%= config.app %>/components/foundation/js/vendor/jquery.js',
-                        '<%= config.app %>/components/foundation/js/foundation/foundation.js',
-                        '<%= config.app %>/components/foundation/js/foundation/foundation.*.js',
+                        '<%= config.app %>/bower_components/foundation/js/vendor/jquery.js',
+                        '<%= config.app %>/bower_components/foundation/js/foundation/foundation.js',
+                        '<%= config.app %>/bower_components/foundation/js/foundation/foundation.*.js',
                         '<%= config.app %>/scripts/{,*/}*.js'
                     ],
                 }
@@ -92,12 +92,12 @@ module.exports = function (grunt) {
             live: {
                 files: {
                     '<%= config.dist %>/assets/modernizr.js': [
-                        '<%= config.app %>/components/foundation/js/vendor/modernizr.js'
+                        '<%= config.app %>/bower_components/foundation/js/vendor/modernizr.js'
                     ],
                     '<%= config.dist %>/assets/main.js': [
-                        '<%= config.app %>/components/foundation/js/vendor/jquery.js',
-                        '<%= config.app %>/components/foundation/js/foundation/foundation.js',
-                        '<%= config.app %>/components/foundation/js/foundation/foundation.*.js',
+                        '<%= config.app %>/bower_components/foundation/js/vendor/jquery.js',
+                        '<%= config.app %>/bower_components/foundation/js/foundation/foundation.js',
+                        '<%= config.app %>/bower_components/foundation/js/foundation/foundation.*.js',
                         '<%= config.app %>/scripts/{,*/}*.js'
                     ],
                 }
@@ -154,7 +154,7 @@ module.exports = function (grunt) {
                     ]
                 },{
                     expand: true,
-                    cwd: '<%= config.app %>/components/font-awesome/font',
+                    cwd: '<%= config.app %>/bower_components/font-awesome/font',
                     dest: '<%= config.dist %>/assets',
                     src: [
                         '*'

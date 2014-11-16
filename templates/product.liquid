@@ -11,11 +11,11 @@
 <div class="row">
     <form class="custom" action="/cart/add" method="post">
         <div class="small-12 medium-6 push-6 columns">
-            
+
             <h3>{{ product.title }}</h3>
-            
+
             <h5 class="subheader">{{ product.vendor | link_to_vendor  }}</h5>
-            
+
             <hr>
 
             {% if product.available %}
@@ -27,7 +27,7 @@
                         {{ product.variants.first.price | money }}
                     </h4>
                     <input type="hidden" name="id" value="{{ product.variants.first.id }}">
-                
+
                 {% else %}
 
                     <h4>
@@ -35,7 +35,7 @@
                         {% for variant in product.variants %}
                             <label for="radio">
                                 <input name="id" type="radio" id="radio" value="{{ variant.id }}"
-                                    {% if variant.available == false %} 
+                                    {% if variant.available == false %}
                                         disabled
                                     {% elsif checked %}
                                         checked{% assign checked = false %}
@@ -44,10 +44,10 @@
                             </label>
                         {% endfor %}
                     </h4>
-                    
+
                 {% endif %}
 
-                <button class="button" type="submit"><i class="icon-shopping-cart"></i> Add to cart</button>
+                <button class="button" type="submit"><i class="fa fa-shopping-cart"></i> Add to cart</button>
 
             {% else %}
                 <p>Sorry, the product is not available.</p>
@@ -65,14 +65,14 @@
 
         {% if product.images.size > 1 %}
             <ul class="medium-block-grid-4">
-                {% for image in product.images %}                
+                {% for image in product.images %}
                     <li><a href="{{ image | product_img_url: 'grande' }}" title="{{ product.title }}"><img class="th" src="{{ image | product_img_url: 'small' }}" alt="{{ product.title | escape }}"></a></li>
-                {% endfor %}        
+                {% endfor %}
             </ul>
         {% endif %}
     </div>
 </div>
 
-            
-               
-            
+
+
+

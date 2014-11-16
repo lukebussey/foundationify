@@ -1,39 +1,39 @@
 <div class="row">
     <div class="small-12 columns">
 
-    	<ul class="breadcrumbs">
+        <ul class="breadcrumbs">
             <li><a href="/">Home</a></li>
             <li class="current"><a href="{{ blog.url }}">{{ blog.title }}</a>
         </ul>
 
-		<h2>{{ blog.title }}</h2>
+        <h2>{{ blog.title }}</h2>
 
-		{% paginate blog.articles by 10 %}
-			
-			{% for article in blog.articles  %}
-				<h3><i class="icon-file"></i> <a href="{{article.url}}">{{ article.title }}</a></h3>
+        {% paginate blog.articles by 10 %}
 
-				<p>
-					By {{ article.author }}<br>
-					Posted on {{ article.created_at | date: "%B %d, %Y" }}
-					{% if blog.comments_enabled? %}
-		       			{% if article.comments_count == 0 %}
-							| 0 comments
-						{% else %}
-		 					| <a href="{{article.url}}#comments">{{ article.comments_count }} comments</a>
-						{% endif %}
-		       		{% endif %}
-				</p>
+            {% for article in blog.articles  %}
+                <h3><i class="fa fa-file"></i> <a href="{{article.url}}">{{ article.title }}</a></h3>
 
-		    	{{ article.excerpt }}
+                <p>
+                    By {{ article.author }}<br>
+                    Posted on {{ article.created_at | date: "%B %d, %Y" }}
+                    {% if blog.comments_enabled? %}
+                        {% if article.comments_count == 0 %}
+                            | 0 comments
+                        {% else %}
+                            | <a href="{{article.url}}#comments">{{ article.comments_count }} comments</a>
+                        {% endif %}
+                    {% endif %}
+                </p>
 
-		    	<p><a href="{{ article.url }}">Read more…</a></p>
+                {{ article.excerpt }}
 
-		    {% endfor %}
-		    	
-		  	{{ paginate | default_pagination }}
-			
-		{% endpaginate %}
+                <p><a href="{{ article.url }}">Read more…</a></p>
 
-	</div>
+            {% endfor %}
+
+            {{ paginate | default_pagination }}
+
+        {% endpaginate %}
+
+    </div>
 </div>

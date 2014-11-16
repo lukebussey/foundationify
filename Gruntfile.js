@@ -76,8 +76,8 @@ module.exports = function (grunt) {
         uglify: {
             dist: {
                 files: {
-                    '<%= config.dist %>/assets/custom.modernizr.js': [
-                        '<%= config.app %>/components/foundation/js/vendor/custom.modernizr.js'
+                    '<%= config.dist %>/assets/modernizr.js': [
+                        '<%= config.app %>/components/foundation/js/vendor/modernizr.js'
                     ],
                     '<%= config.dist %>/assets/main.js': [
                         '<%= config.app %>/components/foundation/js/vendor/jquery.js',
@@ -91,8 +91,8 @@ module.exports = function (grunt) {
         concat: {
             live: {
                 files: {
-                    '<%= config.dist %>/assets/custom.modernizr.js': [
-                        '<%= config.app %>/components/foundation/js/vendor/custom.modernizr.js'
+                    '<%= config.dist %>/assets/modernizr.js': [
+                        '<%= config.app %>/components/foundation/js/vendor/modernizr.js'
                     ],
                     '<%= config.dist %>/assets/main.js': [
                         '<%= config.app %>/components/foundation/js/vendor/jquery.js',

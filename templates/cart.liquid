@@ -12,45 +12,45 @@
 <div class="row">
     <div class="small-12 columns">
 
-		<h2>Your Cart</h2>
-		{% if cart.item_count == 0 %}
-			<p>You have nothing in your cart.</p>
-		{% else %}
+        <h2>Your Cart</h2>
+        {% if cart.item_count == 0 %}
+            <p>You have nothing in your cart.</p>
+        {% else %}
 
-			<table width="100%">
-				<thead>
-					<th></th>
-					<th>Item</th>
-					<th>Price</th>
-					<th colspan="2">Quantity</th>
-					<th>Total</th>
-					<th></th>
-				</thead>
+            <table width="100%">
+                <thead>
+                    <th></th>
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th colspan="2">Quantity</th>
+                    <th>Total</th>
+                    <th></th>
+                </thead>
 
-		 		<tbody>
-					{% for item in cart.items %}
-						<tr>
-							<td><a href="{{ item.product.url }}"><img class="th" src="{{ item.product.images.first | product_img_url: 'icon' }}" alt="{{ item.title | escape }}" /></a></td>
-							<td><a href="{{ item.product.url }}">{{ item.title }}</a></td>
-							<td>{{ item.price | money }}</td>
-							<td><input type="number" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}"></td>
-							<td><button class="button small secondary" type="submit" title="Update Cart"><i class="icon-refresh"></i></button></td>
-							<td>{{ item.line_price | money }}</td>
-							<td><a class="button small secondary" href="/cart/change?line={{ forloop.index }}&quantity=0" title="Remove"><i class="icon-remove"></i></a></td>
-						</tr>
-					{% endfor %}
-				</tbody>
-			</table>
+                <tbody>
+                    {% for item in cart.items %}
+                        <tr>
+                            <td><a href="{{ item.product.url }}"><img class="th" src="{{ item.product.images.first | product_img_url: 'icon' }}" alt="{{ item.title | escape }}" /></a></td>
+                            <td><a href="{{ item.product.url }}">{{ item.title }}</a></td>
+                            <td>{{ item.price | money }}</td>
+                            <td><input type="number" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}"></td>
+                            <td><button class="button small secondary" type="submit" title="Update Cart"><i class="fa fa-refresh"></i></button></td>
+                            <td>{{ item.line_price | money }}</td>
+                            <td><a class="button small secondary" href="/cart/change?line={{ forloop.index }}&quantity=0" title="Remove"><i class="fa fa-remove"></i></a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
 
-			<h4>Subtotal: {{ cart.total_price | money }}</h4>
+            <h4>Subtotal: {{ cart.total_price | money }}</h4>
 
-			<button class="button secondary" type="submit"><i class="icon-refresh"></i> Update Cart</button>
-			
-			<button class="button" type="submit" name="checkout"><i class="icon-credit-card"></i> Check Out</button>
+            <button class="button secondary" type="submit"><i class="fa fa-refresh"></i> Update Cart</button>
 
-		{% endif %}
+            <button class="button" type="submit" name="checkout"><i class="fa fa-credit-card"></i> Check Out</button>
 
-	</div>
+        {% endif %}
+
+    </div>
 </div>
 
 </form>

@@ -152,7 +152,8 @@ module.exports = function (grunt) {
                         'snippets/*',
                         'templates/*',
                     ]
-                },{
+                },
+                {
                     expand: true,
                     cwd: '<%= config.app %>/bower_components/fontawesome/fonts',
                     dest: '<%= config.dist %>/assets',

@@ -1,7 +1,9 @@
-var Foundationify = function () {
+'use strict';
+
+var Foundationify = (function () {
 
 	// Initalize product image gallery function on product pages
-	function initProductImages () {
+	function initProductImages() {
 
 		// Define the scope
 		var $productImages = $('#product-images', 'body.product');
@@ -9,7 +11,7 @@ var Foundationify = function () {
 		// Select the thumbnails
 		var $thumbs = $('ul img', $productImages);
 
-		if ( $thumbs.length ) {
+		if ($thumbs.length) {
 
 			// Select the large image
 			var $largeImage = $('img', $productImages).first();
@@ -29,7 +31,7 @@ var Foundationify = function () {
 				// Change the src and alt attributes of the large image
 				$largeImage.attr('src', $(this).parent('a').attr('href'))
 						   .attr('alt', $(this).attr('alt'));
-				
+
 			});
 
 			// Return the loading cursor to default after the large image has loaded
@@ -38,16 +40,16 @@ var Foundationify = function () {
 			});
 
 
-		} 
+		}
 	}
 
 	return {
 		init: function () {
 			initProductImages();
-		}		
+		}
 	};
 
-}();
+}());
 
 $(document).ready(function () {
 	Foundationify.init();

@@ -1,9 +1,13 @@
 {
   "name": "foundationify",
-  "version": "0.0.4",
+  "version": "0.0.5",
+  "authors": [
+    "Luke Bussey <luke.bussey@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
   "dependencies": {
     "foundation": "~5.4.7",
     "fontawesome": "~4.2.0"
-  },
-  "devDependencies": {}
+  }
 }

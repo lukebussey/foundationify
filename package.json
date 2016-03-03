@@ -1,6 +1,8 @@
 {
   "name": "foundationify",
   "version": "0.0.5",
+  "author": "Luke Bussey <luke.bussey@gmail.com>",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/lukebussey/foundationify.git"

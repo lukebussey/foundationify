@@ -8,6 +8,6 @@
   "private": true,
   "dependencies": {
     "foundation": "~5.4.7",
-    "fontawesome": "~4.2.0"
+    "fontawesome": "~4.5.0"
   }
 }

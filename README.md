@@ -1,5 +1,6 @@
-Foundationify — A [Foundation](http://foundation.zurb.com/) 5 based theme for Shopify
-========================================================
+# Foundationify
+
+[![devDependency Status](https://david-dm.org/lukebussey/foundationify/dev-status.svg)](https://david-dm.org/lukebussey/foundationify#info=devDependencies)
 
 Foundationify is a theme for Shopify based on the responsive Zurb [Foundation](http://foundation.zurb.com/) 5 framework.
 

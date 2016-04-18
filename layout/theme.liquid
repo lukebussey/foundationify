@@ -29,17 +29,42 @@
             <section class="top-bar-section">
                 <ul class="right">
                     {% for link in linklists.main-menu.links %}
-                        <li>{{ link.title | link_to: link.url }}</li>
+                        {% comment %}
+                          Create a dropdown menu by naming a linklist the same as a link in the parent nav
+
+                          More info on dropdowns:
+                            - http://docs.shopify.com/manual/your-website/navigation/create-drop-down-menu
+                        {% endcomment %}
+                        {% assign child_list_handle = link.title | handleize %}
+                        {% if linklists[child_list_handle] != blank %}
+                            <li class="{% if link.active %} active {% endif %}has-dropdown">
+                                <a href="{{ link.url }}">{{ link.title }}</a>
+                                <ul class="dropdown">
+                                    {% for childlink in linklists[child_list_handle].links %}
+                                        <li{% if childlink.active %} class="active"{% endif %}>
+                                            <a href="{{ childlink.url }}">{{ childlink.title }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        {% else %}
+                            <li{% if link.active %} class="active"{% endif %}>
+                                <a href="{{ link.url }}">{{ link.title }}</a>
+                            </li>
+                        {% endif %}
                     {% endfor %}
                     <li class="divider"></li>
-                    <li><a href="/cart"><i class="fa fa-shopping-cart"></i> Cart ({{ cart.item_count}})</a></li>
+                    <li{% if template == 'cart' %} class="active"{% endif %}>
+                        <a href="/cart"><i class="fa fa-shopping-cart"></i> Cart ({{ cart.item_count}})</a>
+                    </li>
                     {% if cart.item_count > 0 %}
-                    <li class="divider"></li>
-                    <li class="has-form"><a class="button" href="/checkout"><i class="icon-credit-card"></i> Check Out</a></li>
+                        <li class="divider"></li>
+                        <li class="has-form">
+                            <a class="button" href="/checkout"><i class="icon-credit-card"></i> Check Out</a>
+                        </li>
                     {% endif %}
                 </ul>
             </section>
-
         </nav>
 
         {% if template == 'list-collections' %}
